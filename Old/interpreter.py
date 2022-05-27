@@ -20,7 +20,7 @@ version = "0.0.1"
 
 class Interpreter:
     def Interpret(self, code : str) -> None:
-        subprocess.call(["python", "output.py"])
+        subprocess.call(["python3", "output.py"])
 
 
 def GetCode(filePath) -> str:
@@ -77,7 +77,7 @@ def HandleArgs() -> None:
                     f.write(parser.code)
                 if (os.path.isfile(fileName + ".exe")):
                     os.remove(fileName + ".exe")
-                subprocess.call(["PyInstaller", fileName + ".py", "--onefile"])
+                subprocess.call(["pyinstaller", fileName + ".py", "--onefile"])
                 os.rename("dist/{}".format(fileName+".exe"), "./"+sys.argv[3])
                 os.remove(fileName + ".py")
                 os.remove(fileName + ".spec")

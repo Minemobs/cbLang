@@ -95,7 +95,7 @@ class Parser
                     {
                         includeName = words[wordNo + 1];
                         code = code.replace(line, "");
-                        with open(includeName.removesuffix(";") + ".cb", "r") as file
+                        with open(self.RemoveSuffix(includeName, ";") + ".cb", "r") as file
                         {
                             code = file.read() + "\n" + code;
                         }
@@ -140,6 +140,15 @@ class Parser
             }
         }
         return code;
+    }
+
+    function RemoveSuffix(input_string: str, suffix: str) is str
+    {
+        if(suffix and input_string.endswith(suffix))
+        {
+            return input_string[:-len(suffix)];
+        }
+        return input_string;
     }
 
     function ParseKeyWords(code: str) is str

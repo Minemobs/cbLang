@@ -10,7 +10,7 @@ class Interpreter()
 {
     function Interpret(code)
     {
-        subprocess.call(["python", "output.py"]);
+        subprocess.call(["python3", "output.py"]);
     }
 }
 class Main()
@@ -104,7 +104,7 @@ class Main()
                     {
                         os.remove(fileName + ".exe");
                     }
-                    subprocess.call(["PyInstaller", fileName + ".py", "--onefile", "--log-level", "ERROR"]);
+                    subprocess.call(["pyinstaller", fileName + ".py", "--onefile", "--log-level", "ERROR"]);
                     os.rename("dist/{}".format(fileName+".exe"),"./"+sys.argv[3]);
                     os.remove(fileName + ".py");
                     os.remove(fileName + ".spec");

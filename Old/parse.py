@@ -49,7 +49,7 @@ class Parser:
                 if word == "include" and not self.IsInString(word, line):
                     includeName = words[wordNo + 1]
                     code = code.replace(line, "")
-                    with open(includeName.removesuffix(";") + ".cb", "r") as file:
+                    with open(self.RemoveSuffix(includeName, ";") + ".cb", "r") as file:
                         code = file.read() + "\n" + code
         for line in code.splitlines():
             if "from native reference " in line:
@@ -70,6 +70,11 @@ class Parser:
                     code = code.replace(line, newLine)
 
         return code
+    
+    def RemoveSuffix(self, input_string: str, suffix: str):
+        if suffix and input_string.endswith(suffix):
+            return input_string[:-len(suffix)]
+        return input_string
 
     def ParseKeyWords(self, code: str) -> str:
         for line in code.splitlines():
