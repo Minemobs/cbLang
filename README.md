@@ -20,7 +20,11 @@ So, how does it work?
 
 - ## Linux
     You can download the interpreter on [Minemobs's releases](https://github.com/Minemobs/cbLang/releases)
-    or by using the [installer](https://example.com)
+    or by using the [installer](https://github.com/Minemobs/cbLang/blob/main/installer.sh)
+
+## Uninstalling
+- ## Linux
+    Just remove the `cbLang` file in `/usr/local/bin` (for example `sudo rm /usr/local/bin/cbLang`)
 
 ## Using the language
 
