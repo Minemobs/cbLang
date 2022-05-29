@@ -39,19 +39,14 @@ class Main()
 }
 ```
 *^This is a basic `Hello World` program.*
-
-To run this, you will need the CBLang interpreter that you can either obtain by downloading it from the [releases section](https://github.com/Ceebox/cbLang/releases) or running `.\build.bat` (this will give you a depricated version of the interpreter based on the old Python code).
-
 ⠀  
 ## Running, transpiling and 'compiling'
 CBLang supports lots of methods of running your code, either having it directly interpreted, transpiling it to Python and spitting out the file for you to run when you want, or using PyInstaller to 'compile' (a more technically correct word would be 'pack') your code to an exe.
 
 To run code directly, use the command `cbLang.exe fileName.cb` or `cbLang.exe -r fileName.cb`.⠀  
 To transpile code, use the command `cbLang.exe -t fileName.cb outputfile.py`.⠀  
-To compile code, use the command `cblang.exe -c filename.cb` or `cbLang.exe -c filename.cb output.exe` . *(This requires PyInstaller to be installed)*.⠀   
+To compile code, use the command `cblang.exe -c filename.cb` or `cbLang.exe -c filename.cb output.exe` . *(This requires [PyInstaller](https://pypi.org/project/pyinstaller/) to be installed)*.⠀   
 
-
-⠀  
 **More advanced behaviour:**
 
 ```csharp
