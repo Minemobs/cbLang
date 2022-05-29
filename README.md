@@ -13,16 +13,27 @@ Be warned that everything is basically held together by hopes and dreams, *so yo
 
 So, how does it work?
 
+## Installing
+
+- ## Windows
+    You can download the interpreter on [Ceebox's releases](https://github.com/Ceebox/cbLang/releases) 
+
+- ## Linux
+    You can download the interpreter on [Minemobs's releases](https://github.com/Minemobs/cbLang/releases)
+    or by using the [installer](https://example.com)
+
 ## Using the language
 
-    class Main()
+```cs
+class Main()
+{
+    function Main()
     {
-        function Main()
-        {
-            //Here is a comment!
-            print("Hello World");
-        }
+        //Here is a comment!
+        print("Hello World");
     }
+}
+```
 *^This is a basic `Hello World` program.*
 
 To run this, you will need the CBLang interpreter that you can either obtain by downloading it from the [releases section](https://github.com/Ceebox/cbLang/releases) or running `.\build.bat` (this will give you a depricated version of the interpreter based on the old Python code).
@@ -33,78 +44,77 @@ CBLang supports lots of methods of running your code, either having it directly 
 
 To run code directly, use the command `cbLang.exe fileName.cb` or `cbLang.exe -r fileName.cb`.⠀  
 To transpile code, use the command `cbLang.exe -t fileName.cb outputfile.py`.⠀  
-To compile code, use the command `cbLang.exe -c filename.cb output.exe`. *(This requires PyInstaller to be installed)*.⠀   
+To compile code, use the command `cblang.exe -c filename.cb` or `cbLang.exe -c filename.cb output.exe` . *(This requires PyInstaller to be installed)*.⠀   
 
-⠀  
+
 ⠀  
 **More advanced behaviour:**
 
-    //main.cb
+```csharp
+
+//main.cb
     
-    //Include python libraries
-    from native reference sys;
-
-    //Include other cbLang code
-    include OtherFile;
-
-    class Main()
+//Include python libraries
+from native reference sys;
+//Include other cbLang code
+include OtherFile;
+class Main()
+{
+    function Main()
     {
-        function Main()
+        TryQuit(false);
+        instance = OtherClass();
+        print(instance.Add(1, 2));
+        TryQuit(true);
+        print(instance.Add(2, 3));
+        //^This line will never be reached
+    }
+    function Quit(shouldQuit : bool)
+    {
+        if (shouldQuit == true)
         {
-            TryQuit(false);
-
-            instance = OtherClass();
-            print(instance.Add(1, 2));
-
-            TryQuit(true);
-            print(instance.Add(2, 3));
-            //^This line will never be reached
+            print("Quitting");
+            sys.exit();
         }
-        function Quit(shouldQuit : bool)
+        else
         {
-            if (shouldQuit == true)
-            {
-                print("Quitting");
-                sys.exit();
-            }
-            else
-            {
-                print("Did not quit");
-            }
+            print("Did not quit");
         }
     }
-⠀
+}
     
-    //OtherFile.cb
-    class OtherClass
+//OtherFile.cb
+class OtherClass
+{
+    //Constructor
+    function Start()
     {
-        //Constructor
-        function Start()
-        {
-            print("Created a new instance of OtherClass!");
-        }
-
-        function Add(a, b) is int
-        {
-            return a + b;
-        }
+        print("Created a new instance of OtherClass!");
     }
+    function Add(a, b) is int
+    {
+        return a + b;
+    }
+}
+```
 
 *^This is a basic example of importing external code, along with demonstrating other concepts in the programming language.*
 
-    class Main
+```csharp
+class Main
+{
+    function Main()
     {
-        function Main()
-        {
-            Other.Test();
-        }
+        Other.Test();
     }
+}
+class Other
+{
+    static function Test()
+    {
+        print("This code was printed from a static method in Other");
+    }
+}
+```
 
-    class Other
-    {
-        static function Test()
-        {
-            print("This code was printed from a static m,ethod in Other");
-        }
-    }
 *^This is a basic example of static methods.*
