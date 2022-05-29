@@ -96,16 +96,17 @@ class Main()
                 {
                     parser = Parser(this.GetCode((sys.argv[2])));
                     fileName = sys.argv[3].split(".")[0];
+                    useWindows = sys.platform == "win32";
                     with open(fileName + ".py", "w") as f
                     {
                         f.write(parser.code);
                     }
-                    if (os.path.isfile(fileName + ".exe"))
+                    if (os.path.isfile(fileName + (".exe" if useWindows else "")))
                     {
-                        os.remove(fileName + ".exe");
+                        os.remove(fileName + (".exe" if useWindows else ""));
                     }
                     subprocess.call(["pyinstaller", fileName + ".py", "--onefile", "--log-level", "ERROR"]);
-                    os.rename("dist/{}".format(fileName+".exe"),"./"+sys.argv[3]);
+                    os.rename("dist/{}".format(fileName + (".exe" if useWindows else "")), "./" + sys.argv[3]);
                     os.remove(fileName + ".py");
                     os.remove(fileName + ".spec");
                     shutil.rmtree("build");

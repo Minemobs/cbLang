@@ -136,3 +136,5 @@ cbLangBootstrap/*
 #Any compiled files
 *.exe
 cbLang
+test/*
+!test/*.cb
