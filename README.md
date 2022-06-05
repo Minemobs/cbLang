@@ -20,7 +20,7 @@ So, how does it work?
 
 - ## Linux
     You can download the interpreter on [Minemobs's releases](https://github.com/Minemobs/cbLang/releases)
-    or by using the [installer](https://github.com/Minemobs/cbLang/blob/main/installer.sh)
+    or by using the [installer](https://raw.githubusercontent.com/Minemobs/cbLang/main/installer.sh)
 
 ## Uninstalling
 - ## Linux
